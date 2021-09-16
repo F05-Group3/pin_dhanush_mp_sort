@@ -3,4 +3,4 @@ virtenv
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
-
+.venv
