@@ -1,8 +1,13 @@
 from org.transcrypt.stubs.browser import *
 import random
 
+array = []
+
 def gen_random_int(number, seed):
-	pass
+	random_list = list(range(number))
+	random.seed(seed)
+	random.shuffle(random_list)
+	return random_list
 
 def generate():
 	global array
@@ -12,15 +17,13 @@ def generate():
 
 	# call gen_random_int() with the given number and seed
 	# store it to the variable array
-	pass
+	array = gen_random_int(number, seed)
 
-	array = None
 	# convert the items into one single string 
 	# the number should be separated by a comma
 	# and a full stop should end the string.
-	pass
-
-	array_str = None
+	array_str = ",".join(list(map(str, array)))
+	array_str += '.'
 
 	# This line is to placed the string into the HTML
 	# under div section with the id called "generate"	
@@ -28,6 +31,7 @@ def generate():
 
 
 def sortnumber1():
+
 	'''	This function is used in Exercise 1.
 		The function is called when the sort button is clicked.
 
@@ -37,9 +41,13 @@ def sortnumber1():
 		- call your sort function, either bubble sort or insertion sort
 		- create a string of the sorted numbers and store it in array_str
 	'''
-	pass
+	to_sort = document.getElementById("generate").innerHTML
 
-	array_str = None
+	to_sort_list = to_sort[:-1].split(',')
+
+	sorted_list = bubble_sort(to_sort_list)
+
+	array_str = ','.join(sorted_list) + '.'
 	
 	document.getElementById("sorted").innerHTML = array_str
 
@@ -64,10 +72,20 @@ def sortnumber2():
 
 	# Your code should start from here
 	# store the final string to the variable array_str
-	pass
+	user_val_list = list(map(str, value.strip().split(',')))
 
-	array_str = None
+	sorted_user_val_list = bubble_sort(user_val_list)
+
+	array_str = ','.join(sorted_user_val_list) + '.'
 
 	document.getElementById("sorted").innerHTML = array_str
+
+
+def bubble_sort(array):
+	for i in range(len(array)-1):
+		for j in range(len(array) - i -1):
+			if array[j] > array[j+1]:
+				array[j], array[j+1] = array[j+1], array[j]
+	return array
 
 
