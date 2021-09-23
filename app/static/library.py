@@ -72,7 +72,9 @@ def sortnumber2():
 
 	# Your code should start from here
 	# store the final string to the variable array_str
-	user_val_list = list(map(str, value.strip().split(',')))
+
+
+	user_val_list = list(map(float, value.strip().split(',')))
 
 	sorted_user_val_list = bubble_sort(user_val_list)
 
